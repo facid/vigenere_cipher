@@ -2,6 +2,7 @@ package vigenerecipher;
 import java.util.Scanner;
 
 public class VigenereDemo {
+
     private int asciiMove = (int)'a';
 
     public static void main(String args[]){
