@@ -8,24 +8,23 @@ public class VigenereDemo {
     public static void main(String args[]){
         VigenereDemo vd = new VigenereDemo();
 
-        Scanner scr = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Enter text: ");
+            String encodingText = scanner.nextLine();
 
-        System.out.println("Enter text: ");
-        String encodingText = scr.nextLine();
+            System.out.println("Enter key: ");
+            String key = scanner.nextLine();
+            String encodedText = vd.encrypt(encodingText, key);
+            System.out.println(encodedText);
 
-        System.out.println("Enter key: ");
-        String key = scr.nextLine();
-        String encodedText = vd.encrypt(encodingText, key);
-        System.out.println(encodedText);
-
-        System.out.println("Enter decoded text: ");
-        String decodingText = scr.nextLine();
-        String decodedText = vd.decrypt(decodingText,key);
-        System.out.println(decodedText);
+            System.out.println("Enter decoded text: ");
+            String decodingText = scanner.nextLine();
+            String decodedText = vd.decrypt(decodingText, key);
+            System.out.println(decodedText);
+        }
     }
 
-
-    private String encrypt(String text, String keyWord){
+    private String encrypt(String text, String keyWord) {
         StringBuilder builder = new StringBuilder();
 
         for (int i = 0; i < text.length(); i++) {
